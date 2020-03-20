@@ -1,18 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
+import { GreetComponent } from './greet/greet.component';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GreetComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule
+    BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [GreetComponent],
+  // bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private injector: Injector) {
+    const el = createCustomElement(GreetComponent, { injector: this.injector});
+    customElements.define('my-greet', el);
+  }
+
+  ngDoBootstrap() {}
+
+}
