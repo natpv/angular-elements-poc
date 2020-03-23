@@ -21,7 +21,7 @@ import { GreetComponent } from './greet/greet.component';
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [GreetComponent],
-  bootstrap: [AppComponent]
+  // bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {

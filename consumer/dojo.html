@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tutorial: Hello Dojo!</title>
+</head>
+
+<body>
+    <h1 id="greeting">Hello</h1>
+    <h2>Loading Angular content</h2>
+    
+    <my-greet name="Dojo Application, I am Angular" style-name = "EPNM"></my-greet>
+    <!-- load Dojo -->
+    <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+        data-dojo-config="async: true"></script>
+    <!-- load custom elements -->
+    <script src="angular-elements-poc.js"></script>
+    <!-- Load custom CSS files -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/greet.component.css">
+    <link rel="stylesheet" type="text/css" href="assets/greet.cw.component.css"> -->
+    <script>
+        require([
+            'dojo/dom',
+            'dojo/domReady!'
+        ], function (dom) {
+            var greeting = dom.byId('greeting');
+            greeting.innerHTML += ' from Dojo!';
+        });
+    </script>
+</body>
+
+</html>

@@ -5,7 +5,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-greet',
-  templateUrl: './greet.component.html'
+  templateUrl: './greet.component.html',
+  styleUrls: ['./custom-style.css']
 })
 export class GreetComponent implements OnInit {
 
@@ -19,7 +20,8 @@ export class GreetComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    // this.cssUrl = this.styleName === 'EPNM' ? 'assets/greet.cw.component.css' : 'assets/greet.component.css';
+    this.cssUrl = 'custom-style.css';
+    this.loadStyle(name);
   }
 
   emitLoadCSS(appName) {
@@ -33,7 +35,7 @@ export class GreetComponent implements OnInit {
     let themeLink = this.document.getElementById(
       'client-theme'
     ) as HTMLLinkElement;
-    let styleUrl = appName === 'CW' ? 'assets/greet.cw.component.css' : 'assets/greet.component.css';
+    let styleUrl = (appName === 'CW') ? 'assets/greet.cw.component.css' : 'assets/greet.component.css';
 
     if (themeLink) {
       themeLink.href = styleUrl;
@@ -45,8 +47,6 @@ export class GreetComponent implements OnInit {
 
       head.appendChild(style);
     }
-
-    
 
   }
 
