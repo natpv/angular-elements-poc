@@ -1,13 +1,13 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "angular-elements-poc": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "root": "",
@@ -28,12 +28,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.sass"
-              
+              "src/styles.scss"
             ],
-            "scripts": [
-              
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -126,6 +123,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-elements-poc"
+    }
+  },
+  "defaultProject": "angular-elements-poc",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

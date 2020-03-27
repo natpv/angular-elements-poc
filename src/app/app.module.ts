@@ -6,29 +6,38 @@ import { createCustomElement } from '@angular/elements';
 
 import { AppComponent } from './app.component';
 import { GreetComponent } from './greet/greet.component';
+import { ConfigComponent } from './config/config.component';
+import { AgGridModule } from 'ag-grid-angular';
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GreetComponent
+    GreetComponent,
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AgGridModule.withComponents([])
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [GreetComponent],
-  // bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {
-    const el = createCustomElement(GreetComponent, { injector: this.injector});
-    customElements.define('my-greet', el);
   }
 
-  ngDoBootstrap() {}
+  ngDoBootstrap() {
+    const el = createCustomElement(GreetComponent, { injector: this.injector});
+    customElements.define('config-element', el);
+
+    const el1 = createCustomElement(ConfigComponent, { injector : this.injector});
+    customElements.define('ztp-config', el1);
+  }
 
 }
