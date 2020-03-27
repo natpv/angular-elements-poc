@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-config',
@@ -28,42 +29,15 @@ export class ConfigComponent implements OnInit {
     }
   ];
 
-  rowData: any = [
-    {
-      configName : 'Config 1',
-      platform : 'IOS-XR',
-      version : '1.1',
-      uuid : '177bb8b8-3941-40a7-a533-64905c333f49'
-    },
-    {
-      configName : 'Config 2',
-      platform : 'IOS-XE',
-      version : '7.1',
-      uuid : '94ca3411-7ada-46e6-9add-3e6ff77e6e21'
-    },
-    {
-      configName : 'Config 3',
-      platform : 'IOS-XR',
-      version : '1.3',
-      uuid : '0285ec1d-8fba-4886-a34a-97294312f66b'
-    },
-    {
-      configName : 'Config 4',
-      platform : 'IOS-XE',
-      version : '7.2',
-      uuid : '177bb8b8-3941-40a7-a533-64905c333f49'
-    },
-    {
-      configName : 'Config 5',
-      platform : 'IOS-XR',
-      version : '7.3',
-      uuid : '854565ce-91b6-4330-8e36-ceccc827db84'
-    }
-  ]
+  rowData: any = [];
 
-  constructor() { }
+  constructor(private configService: ConfigService) { }
 
   ngOnInit(): void {
+    this.configService.getConfig().subscribe(data => {
+      this.rowData = data.content;
+    });
+    console.log(this.rowData);
   }
 
 }

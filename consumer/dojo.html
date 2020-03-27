@@ -4,28 +4,57 @@
 <head>
     <meta charset="utf-8">
     <title>Tutorial: Hello Dojo!</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css">
 </head>
 
-<body>
-    <h1 id="greeting">Hello</h1>
-    <h2>Loading Angular content</h2>
-    
-    <config-element name="Dojo Application, I am Angular" style-name = "EPNM"></config-element>
+<body class="claro">
+    <div id="mainMenu" data-dojo-type="dijit/MenuBar">
+        <div id="edit" data-dojo-type="dijit/MenuBarItem" data-dojo-props="
+        onClick:function() { document.getElementById('greetComponent').style.display = 'block';
+        document.getElementById('configComponent').style.display = 'none';  }">Config Management</div>
+
+        <div id="view" data-dojo-type="dijit/MenuBarItem" data-dojo-props="
+        onClick:function() {document.getElementById('greetComponent').style.display = 'none';
+        document.getElementById('configComponent').style.display = 'block'; }">Greet Component</div>
+
+    </div>
+
+    <div id="greetComponent">
+        <my-greet name="Dojo Application, I am Angular" style-name="EPNM"></my-greet>
+    </div>
+
+    <div id="configComponent" style="display:none">
+        <config-ztp></config-ztp>
+    </div>
+   
+
     <!-- load Dojo -->
     <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
-        data-dojo-config="async: true"></script>
+        data-dojo-config="async: true, parseOnLoad: true "></script>
     <!-- load custom elements -->
     <script src="angular-elements-poc.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <!-- Load custom CSS files -->
     <!-- <link rel="stylesheet" type="text/css" href="assets/greet.component.css">
     <link rel="stylesheet" type="text/css" href="assets/greet.cw.component.css"> -->
+
     <script>
         require([
             'dojo/dom',
-            'dojo/domReady!'
-        ], function (dom) {
-            var greeting = dom.byId('greeting');
-            greeting.innerHTML += ' from Dojo!';
+            'dojo/domReady!',
+            "dojo/parser",
+            "dijit/Menu",
+            "dijit/MenuItem",
+            "dijit/MenuBar",
+            "dijit/MenuBarItem",
+            "dijit/PopupMenuBarItem",
+        ], function (dom, parser) {
+            parser.parse;
+
+            var onItemSelect = function (event) {
+                dom.byId("lastSelected").innerHTML = this.get("label");
+            };
+
         });
     </script>
 </body>
