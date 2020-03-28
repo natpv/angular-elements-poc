@@ -10,20 +10,20 @@
 <body class="claro">
     <div id="mainMenu" data-dojo-type="dijit/MenuBar">
         <div id="edit" data-dojo-type="dijit/MenuBarItem" data-dojo-props="
-        onClick:function() { document.getElementById('greetComponent').style.display = 'block';
-        document.getElementById('configComponent').style.display = 'none';  }">Config Management</div>
+        onClick:function() { document.getElementById('greetComponent').style.display = 'none';
+        document.getElementById('configComponent').style.display = 'block';  }">Config Management</div>
 
         <div id="view" data-dojo-type="dijit/MenuBarItem" data-dojo-props="
-        onClick:function() {document.getElementById('greetComponent').style.display = 'none';
-        document.getElementById('configComponent').style.display = 'block'; }">Greet Component</div>
+        onClick:function() {document.getElementById('greetComponent').style.display = 'block';
+        document.getElementById('configComponent').style.display = 'none'; }">Greet Component</div>
 
     </div>
 
-    <div id="greetComponent">
+    <div id="greetComponent" style="display:none">
         <my-greet name="Dojo Application, I am Angular" style-name="EPNM"></my-greet>
     </div>
 
-    <div id="configComponent" style="display:none">
+    <div id="configComponent" >
         <config-ztp></config-ztp>
     </div>
    
@@ -33,7 +33,7 @@
         data-dojo-config="async: true, parseOnLoad: true "></script>
     <!-- load custom elements -->
     <script src="angular-elements-poc.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="angular-elements-styles.css">
     <!-- Load custom CSS files -->
     <!-- <link rel="stylesheet" type="text/css" href="assets/greet.component.css">
     <link rel="stylesheet" type="text/css" href="assets/greet.cw.component.css"> -->
